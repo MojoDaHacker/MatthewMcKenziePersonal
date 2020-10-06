@@ -1,13 +1,25 @@
 module.exports = {
   //pathPrefix: `/mygatsby`,
   siteMetadata: {
-    title: 'Landed',
-    author: 'vasrush',
-    description: 'A Gatsby.js V2 Starter based on Landed by HTML5 UP',
+    title: 'McKenzie\'s Keys',
+    author: 'Matthew McKenzie',
+    description: 'Real Estate Services offer by Matthew McKenzie',
     menuLinks: [
       {
         name: 'Home',
         link: '/',
+      },
+      {
+        name: 'Search',
+        link: '/search',
+      },
+      {
+        name: 'Sell',
+        link: '/sell',
+      },
+      {
+        name: 'Blog',
+        link: '/blog',
       },
       {
         name: 'Layouts',
@@ -49,15 +61,11 @@ module.exports = {
           },
         ],
       },
-      {
-        name: 'Elements',
-        link: '/elements',
-      },
-      {
-        name: 'Sign Up',
-        link: '#',
-        cl: 'button primary',
-      },
+      // {
+      //   name: 'Sign Up',
+      //   link: '#',
+      //   cl: 'button primary',
+      // },
     ],
   },
   plugins: [
@@ -84,6 +92,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-html-attributes',
       options: {
