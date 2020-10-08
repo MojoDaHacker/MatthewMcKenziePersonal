@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import MobileMenu from './MobileMenu'
 
 const timeoutLength = 300
@@ -90,10 +91,10 @@ class Header extends React.Component {
     const menuLinks = this.props.menuLinks
     const open = this.state.mouseOverButton || this.state.mouseOverMenu
     const subOpen = this.state.mouseOverSubButton || this.state.mouseOverSubMenu
-
+    console.log(menuLinks)
     return (
-      <React.Fragment>
-        <div className={`navbar-menu ${this.state.mobileActiveClass}`}>
+      <>
+        {/* <div className={`navbar-menu ${this.state.mobileActiveClass}`}>
           <div id="titleBar">
             <a
               role="button"
@@ -108,134 +109,20 @@ class Header extends React.Component {
           <div id="navPanel">
             <MobileMenu siteTitle={siteTitle} menuLinks={menuLinks} />
           </div>
-        </div>
+        </div> */}
 
-        <header id="header">
-          <h1 id="logo">
-            <Link to="/">{siteTitle}</Link>
-          </h1>
-          <div className="navbar-menu">
-            <nav>
-              <ul style={{ display: 'flex', flex: 1 }}>
-                {menuLinks.map(link =>
-                  link.items ? (
-                    <React.Fragment key={link.name}>
-                      <li key={link.name}>
-                        <Link
-                          onMouseEnter={this.enterButton}
-                          onMouseLeave={this.leaveButton}
-                          className={link.cl}
-                          to={link.link}
-                        >
-                          {link.name}
-                        </Link>
-                        <ul
-                          style={
-                            open
-                              ? {
-                                  display: `block`,
-                                  background: `rgba(39, 40, 51, 0.965)`,
-                                  position: `absolute`,
-                                  right: `55%`,
-                                  minWidth: `150px`,
-                                  borderRadius: `5px`,
-                                }
-                              : { display: `none` }
-                          }
-                          onMouseEnter={this.enterMenu}
-                          onMouseLeave={this.leaveMenu}
-                        >
-                          {link.items.map(sublink =>
-                            sublink.items ? (
-                              <React.Fragment key={sublink.name}>
-                                <li
-                                  key={sublink.name}
-                                  style={{
-                                    textAlign: `left`,
-                                    marginLeft: `0`,
-                                    paddingLeft: `0`,
-                                    fontSize: `14px`,
-                                    display: `block`,
-                                    lineHeight: `2.5`,
-                                  }}
-                                >
-                                  <Link
-                                    onMouseEnter={this.enterSubButton}
-                                    onMouseLeave={this.leaveSubButton}
-                                    to={sublink.link}
-                                  >
-                                    {sublink.name}
-                                  </Link>
-                                  <ul
-                                    style={
-                                      subOpen
-                                        ? {
-                                            display: `block`,
-                                            background: `rgba(39, 40, 51, 0.965)`,
-                                            borderRadius: `5px`,
-                                            position: `absolute`,
-                                            right: `100%`,
-                                            width: `100%`,
-                                            marginTop: `-35px`,
-                                          }
-                                        : { display: `none` }
-                                    }
-                                    onMouseEnter={this.enterSubMenu}
-                                    onMouseLeave={this.leaveSubMenu}
-                                  >
-                                    {sublink.items.map(nestedsublink => (
-                                      <li
-                                        key={nestedsublink.name}
-                                        style={{
-                                          textAlign: `left`,
-                                          marginLeft: `0`,
-                                          paddingLeft: `0`,
-                                          fontSize: `14px`,
-                                          whiteSpace: `nowrap`,
-                                          lineHeight: `2.5`,
-                                          display: `block`,
-                                        }}
-                                      >
-                                        <Link to={nestedsublink.link}>
-                                          {nestedsublink.name}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </li>
-                              </React.Fragment>
-                            ) : (
-                              <li
-                                key={sublink.name}
-                                style={{
-                                  textAlign: `left`,
-                                  marginLeft: `0`,
-                                  paddingLeft: `0`,
-                                  fontSize: `14px`,
-                                  lineHeight: `2.5`,
-                                  display: `block`,
-                                }}
-                              >
-                                <Link to={sublink.link}>{sublink.name}</Link>
-                              </li>
-                            )
-                          )}
-                        </ul>
-                      </li>
-                    </React.Fragment>
-                  ) : (
-                    <li key={link.name}>
-                      <Link className={link.cl} to={link.link}>
-                        {link.name}
-                      </Link>
-                    </li>
-                  )
-                )}
-              </ul>
-            </nav>
-          </div>
-        </header>
-      </React.Fragment>
+        <Navbar id="header" expand="sm" fixed="top" >
+          <Navbar.Brand href="#">{`<Icon>   ${siteTitle}`}</Navbar.Brand>
+            <Nav className="ml-auto">
+              {menuLinks.map(link => 
+                link.items ? (
+                  null
+                ) : (
+                  <Nav.Item><Nav.Link key={link.name} href={link.link}>{link.name}</Nav.Link></Nav.Item>
+                ))}
+            </Nav>
+        </Navbar>
+      </>
     )
   }
 }

@@ -7,6 +7,23 @@
 @import url('../css/fontawesome-all.min.css');
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
 
+// Required
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+
+// Optional
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/code";
+@import "../../../node_modules/bootstrap/scss/grid";
+
+
+@import "~bootstrap/scss/bootstrap";
+
+
 /*
 	Landed by HTML5 UP
 	html5up.net | @ajlkn
@@ -1161,16 +1178,6 @@
 			}
 		}
 
-		&:before {
-			background-image: url('../css/images/overlay.png');
-			content: '';
-			display: block;
-			height: 100%;
-			left: 0;
-			top: 0;
-			width: 100%;
-		}
-
 		.image.main {
 			display: none;
 
@@ -1537,73 +1544,38 @@
 
 	#banner {
 		background-attachment: fixed;
-		background-color: _palette(accent2);
-		// background-image: url('../images/banner.jpg');
 		background-position: center center;
 		background-size: cover;
 		box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,0.25);
-		min-height: 100vh;
+		height: 100vh;
 		position: relative;
 		text-align: center;
 		z-index: (_misc(max-spotlight) + 1);
+		color: rgb(248, 166, 14);
 
-		&:before {
-			content: '';
-			display: inline-block;
-			height: 100vh;
-			vertical-align: middle;
-			width: 1%;
-			z-index: 5;
-		}
-
-		&:after {
-			@include vendor('background-image', ('linear-gradient(top, #{_palette(bg-transparent)}, #{_palette(bg-transparent)})', 'url("../css/images/overlay.png");'));
-			content: '';
-			display: block;
-			height: 100%;
-			left: 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
-		}
+		// &:after {
+		// 	@include vendor('background-image', ('linear-gradient(top, #{_palette(bg-transparent)}, #{_palette(bg-transparent)})', 'url("../css/images/overlay.png");'));
+		// 	content: '';
+		// 	display: block;
+		// 	height: 100%;
+		// 	left: 0;
+		// 	position: absolute;
+		// 	top: 0;
+		// 	width: 100%;
+		// }
 
 		.content {
-			display: inline-block;
-			margin-right: 1%;
-			max-width: 95%;
-			padding: $size-wrapper-pad-tb;
 			position: relative;
-			text-align: right;
-			vertical-align: middle;
-			z-index: 1;
+			height: 100%;
 
 			header {
 				display: inline-block;
-				vertical-align: middle;
+				vertical-align: bottom;
 
 				h2 {
+					color: rgb(248, 166, 14);
 					font-size: 2.5em;
 					margin: 0;
-				}
-
-				p {
-					margin: (_size(element-margin) * 0.25) 0 0 0;
-					top: 0;
-				}
-			}
-
-			.image {
-				border-radius: 100%;
-				display: inline-block;
-				height: 18em;
-				margin-left: 3em;
-				vertical-align: middle;
-				width: 18em;
-
-				img {
-					border-radius: 100%;
-					display: block;
-					width: 100%;
 				}
 			}
 		}
@@ -2156,3 +2128,10 @@
 			}
 
 	}
+
+	.keySVG {
+		width: 50px;
+		height: 50px;
+	}
+
+	$primary: rgb(248, 166, 14);

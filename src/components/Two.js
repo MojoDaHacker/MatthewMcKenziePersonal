@@ -1,4 +1,5 @@
 import React from 'react'
+import FeaturedHome from './sharedComponents/FeaturedHome.js'
 import pic03 from '../assets/images/pic03.jpg'
 import { Link as ScrollLink } from 'react-scroll'
 import Fade from 'react-reveal/Fade'
@@ -9,6 +10,8 @@ const Two = props => (
     className="spotlight style2 right inactive"
     style={{ backgroundImage: `url(${pic03})` }}
   >
+
+    <FeaturedHome  />
     <span className="image fit main">
       <img src={pic03} alt="" />
     </span>

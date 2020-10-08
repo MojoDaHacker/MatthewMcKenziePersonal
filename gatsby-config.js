@@ -1,3 +1,5 @@
+const path = require(`path`);
+
 module.exports = {
   //pathPrefix: `/mygatsby`,
   siteMetadata: {
@@ -83,12 +85,33 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: path.join(__dirname, `src`, `assets`, `images`, `logos`),
+          options: {
+            props: {
+              className: "keySVG"
+            },
+          }
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/images/`,
-        name: 'images',
+        path: path.join(__dirname, `src`, `assets`, `images`, `bannerSlideshow`),
+        name: 'bannerImgs',
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: path.join(__dirname, `src`, `assets`),
+        name: 'assets',
+      },
+    },
+    'gatsby-background-image',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
@@ -101,4 +124,4 @@ module.exports = {
     },
     'gatsby-plugin-offline',
   ],
-}
+};

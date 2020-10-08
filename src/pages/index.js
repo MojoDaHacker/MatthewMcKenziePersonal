@@ -1,4 +1,5 @@
 import React from 'react'
+import '../assets/scss/App.scss'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
 import Banner from '../components/Banner'

@@ -2,16 +2,16 @@ import React from 'react'
 import pic02 from '../assets/images/pic02.jpg'
 import { Link as ScrollLink } from 'react-scroll'
 import Fade from 'react-reveal/Fade'
+import {Button} from 'react-bootstrap'
+import Form from './sharedComponents/Form.js'
 
 const One = props => (
   <section
     id="one"
-    className="spotlight style1 bottom inactive"
+    className="spotlight style1 d-flex justify-content-center bottom inactive"
     style={{ backgroundImage: `url(${pic02})` }}
   >
-    <span className="image fit main">
-      <img src={pic02} alt="" />
-    </span>
+    <Form/>
     <Fade bottom big>
       <div className="content">
         <div className="container">

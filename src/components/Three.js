@@ -9,9 +9,6 @@ const Three = props => (
     className="spotlight style3 left inactive"
     style={{ backgroundImage: `url(${pic04})` }}
   >
-    <span className="image fit main bottom">
-      <img src={pic04} alt="" />
-    </span>
     <Fade left big>
       <div className="content">
         <header>
