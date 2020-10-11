@@ -90,6 +90,9 @@ module.exports = {
         rule: {
           include: path.join(__dirname, `src`, `assets`, `images`, `logos`),
           options: {
+            rule: {
+              include: /\.inline\.svg$/
+            },
             props: {
               className: "keySVG"
             },

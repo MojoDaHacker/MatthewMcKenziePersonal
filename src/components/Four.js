@@ -1,81 +1,50 @@
 import React from 'react'
+import { Container as Cont, Row, Col, Image} from 'react-bootstrap'
+import { ChatFill, DoorOpenFill, CashStack, CalendarCheckFill, CardChecklist, PeopleFill} from 'react-bootstrap-icons'
 import Fade from 'react-reveal/Fade'
 
 const Four = props => (
+  
   <Fade up>
-    <section id="four" className="wrapper style1 special fade-up">
-      <div className="container">
-        <header className="major">
-          <h2>Accumsan sed tempus adipiscing blandit</h2>
-          <p>
-            Iaculis ac volutpat vis non enim gravida nisi faucibus posuere arcu
-            consequat
-          </p>
-        </header>
-        <div className="box alt">
-          <div className="row gtr-uniform">
-            <section className="col-4 col-6-medium col-12-xsmall">
-              <span className="icon solid alt major fa-chart-area"></span>
-              <h3>Ipsum sed commodo</h3>
-              <p>
-                Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit
-                orci porttitor.
-              </p>
-            </section>
-            <section className="col-4 col-6-medium col-12-xsmall">
-              <span className="icon solid alt major fa-comment"></span>
-              <h3>Eleifend lorem ornare</h3>
-              <p>
-                Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit
-                orci porttitor.
-              </p>
-            </section>
-            <section className="col-4 col-6-medium col-12-xsmall">
-              <span className="icon solid alt major fa-flask"></span>
-              <h3>Cubilia cep lobortis</h3>
-              <p>
-                Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit
-                orci porttitor.
-              </p>
-            </section>
-            <section className="col-4 col-6-medium col-12-xsmall">
-              <span className="icon solid alt major fa-paper-plane"></span>
-              <h3>Non semper interdum</h3>
-              <p>
-                Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit
-                orci porttitor.
-              </p>
-            </section>
-            <section className="col-4 col-6-medium col-12-xsmall">
-              <span className="icon solid alt major fa-file"></span>
-              <h3>Odio laoreet accumsan</h3>
-              <p>
-                Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit
-                orci porttitor.
-              </p>
-            </section>
-            <section className="col-4 col-6-medium col-12-xsmall">
-              <span className="icon solid alt major fa-lock"></span>
-              <h3>Massa arcu accumsan</h3>
-              <p>
-                Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit
-                orci porttitor.
-              </p>
-            </section>
-          </div>
-        </div>
-        <footer className="major">
-          <ul className="actions special">
-            <li>
-              <a href="/" className="button">
-                Magna sed feugiat
-              </a>
-            </li>
-          </ul>
-        </footer>
-      </div>
-    </section>
+    <Cont className="vh-100 flex-column d-flex justify-content-center text-center">
+      <Row className="h-25">
+        <Col>
+          <ChatFill />
+          <h3>Never Miss  A Call</h3>
+          <p>As our client, you call we pick up. No ifs or buts. We take your business very seriously.</p>
+        </Col>
+        <Col>
+          <DoorOpenFill  />
+          <h3>Find Your Best Home</h3>
+          <p>Whether it's a single family residence, condo, townhome, or investment property.Find the best home that meet your needs.</p>
+        </Col>
+        <Col>
+          <CashStack  />
+          <h3>Get The Best Deal</h3>
+          <p>With our appraisers, squeeze the most dollars out of your home.</p>
+        </Col>
+      </Row>
+      <Row className="h-25">
+        <Col>
+          <CalendarCheckFill  />
+          <h3>Quick and Fast</h3>
+          <p>Get your sale completed in record breaking time, to get you enjoying your home in the fastest way possible.</p>
+        </Col>
+        <Col>
+          <PeopleFill  /> 
+          <h3>Be Apart Of A Team</h3>
+          <p>With an eXP Agent, you get more than just the agent. You get introduced to the mortgage broker, title escrow company and more.
+             This way you are more involved throughout the whole process.</p>
+        </Col>
+        <Col>
+          <CardChecklist  />
+          <h3>The Whole Package</h3>
+          <p>With our help, get great deals on moving your furniture, get the best loans, and recieving the best no-hassle service.</p>
+        </Col>
+      </Row>    
+    </Cont>
   </Fade>
+
 )
 
 export default Four

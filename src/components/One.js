@@ -1,5 +1,6 @@
 import React from 'react'
 import pic02 from '../assets/images/pic02.jpg'
+import {Container as Cont, Row, Col, Card} from 'react-bootstrap'
 import { Link as ScrollLink } from 'react-scroll'
 import Fade from 'react-reveal/Fade'
 import {Button} from 'react-bootstrap'
@@ -8,55 +9,37 @@ import Form from './sharedComponents/Form.js'
 const One = props => (
   <section
     id="one"
-    className="spotlight style1 d-flex justify-content-center bottom inactive"
+    className=""
     style={{ backgroundImage: `url(${pic02})` }}
   >
-    <Form/>
-    <Fade bottom big>
-      <div className="content">
-        <div className="container">
-          <div className="row">
-            <div className="col-4 col-12-medium">
-              <header>
-                <h2>Odio faucibus ipsum integer consequat</h2>
-                <p>
-                  Nascetur eu nibh vestibulum amet gravida nascetur praesent
-                </p>
+    <div className="vh-100 d-flex flex-column">
+      <Cont className=" h-100 d-flex flex-column justify-content-center text-primary">
+        <Card className="p-4"> 
+          <Row className="">
+            <Form />
+          </Row>
+          <Row>
+            <Fade bottom big>
+              <header className="mx-auto">
+                <h2 className="text-center">Search For The Home Of Your Dreams</h2>
               </header>
-            </div>
-            <div className="col-4 col-12-medium">
-              <p>
-                Feugiat accumsan lorem eu ac lorem amet sed accumsan donec.
-                Blandit orci porttitor semper. Arcu phasellus tortor enim mi
-                nisi praesent dolor adipiscing. Integer mi sed nascetur cep
-                aliquet augue varius tempus lobortis porttitor accumsan
-                consequat adipiscing lorem dolor.
-              </p>
-            </div>
-            <div className="col-4 col-12-medium">
-              <p>
-                Morbi enim nascetur et placerat lorem sed iaculis neque ante
-                adipiscing adipiscing metus massa. Blandit orci porttitor
-                semper. Arcu phasellus tortor enim mi mi nisi praesent
-                adipiscing. Integer mi sed nascetur cep aliquet augue varius
-                tempus. Feugiat lorem ipsum dolor nullam.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Fade>
-    <ScrollLink
-      to="two"
-      className="goto-next"
-      activeClass="active"
-      smooth={true}
-      offset={50}
-      duration={1500}
-      spy={true}
-    >
-      Next
-    </ScrollLink>
+            </Fade>
+          </Row>
+        </Card>
+      </Cont>
+      <ScrollLink
+        to="one"
+        className="goto-next text-center"
+        activeClass="active"
+        smooth={true}
+        offset={50}
+        duration={1500}
+        spy={true}
+      >
+        Next
+      </ScrollLink>
+    </div>
+
   </section>
 )
 export default One

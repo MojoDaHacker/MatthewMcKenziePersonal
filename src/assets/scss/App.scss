@@ -1,3 +1,14 @@
+$primary: #EEC35D;
+$secondary: #5D89EE;
+$light: $secondary;
+
+.navbar-brand,
+.navbar-nav,
+.navbar-link,
+.navbar-light {
+  color: $secondary;
+}
+
 // Required
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "../../../node_modules/bootstrap/scss/variables";
@@ -11,10 +22,38 @@
 @import "../../../node_modules/bootstrap/scss/grid";
 
 
+section,
+section::before,
+section::after {
+  min-height: 100vh;
+  box-shadow: 0 1px 3px 1px rgb(41, 41, 41) ;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#banner::before,
+#banner::after {
+  transition: background-position 3s;
+  // animation: carousel 25s 2s;
+  // animation-fill-mode: forwards;
+  background-position-x: center, 200vw, 200vw, 200vw, 200vw;
+}
+
 /* Layout */
 .container-fluid{
   padding-left: 0;
   padding-right: 0;
 }
+
+
+/* Banner */
+
+// #banner,
+// #banner::before,
+// #banner::after {
+//   background-attachment: fixed;
+// }
+
+
 
 @import "~bootstrap/scss/bootstrap";

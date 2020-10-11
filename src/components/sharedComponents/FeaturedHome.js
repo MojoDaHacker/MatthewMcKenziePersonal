@@ -20,7 +20,7 @@ const FeaturedHome = props => {
   console.log(getFeaturedHome.file.childImageSharp.fluid)
 
   return (
-    <Cont className="h-100 d-flex align-items-center">
+    <Cont className="h-100 d-flex align-items-center justify-content-end">
       <Row>
         <Card>
           <Cont>

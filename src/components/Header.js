@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import KeysLogo from '../assets/images/logos/keysLogo.inline.svg'
 import MobileMenu from './MobileMenu'
 
 const timeoutLength = 300
@@ -112,13 +113,13 @@ class Header extends React.Component {
         </div> */}
 
         <Navbar id="header" expand="sm" fixed="top" >
-          <Navbar.Brand href="#">{`<Icon>   ${siteTitle}`}</Navbar.Brand>
+          <Navbar.Brand className="text-primary" href="#">{<KeysLogo width="25px" height="35px" />}   {siteTitle}</Navbar.Brand>
             <Nav className="ml-auto">
               {menuLinks.map(link => 
                 link.items ? (
                   null
                 ) : (
-                  <Nav.Item><Nav.Link key={link.name} href={link.link}>{link.name}</Nav.Link></Nav.Item>
+                  <Nav.Item><Nav.Link className="text-primary" key={link.name} href={link.link}>{link.name}</Nav.Link></Nav.Item>
                 ))}
             </Nav>
         </Navbar>

@@ -1,109 +1,93 @@
-import React , { useState, useEffect } from 'react'
+import React from 'react'
 import {Container as Cont, Row, Col, Image} from 'react-bootstrap'
-import KeysLogo from '../assets/images/logos/keysLogo.svg'
-import Form from './sharedComponents/Form.js'
-import BackImg from 'gatsby-background-image';
+import KeysLogo from '../assets/images/logos/keysLogo.inline.svg'
+import BackgroundSlider from 'gatsby-image-background-slider'
 import {graphql, StaticQuery} from 'gatsby';
 import { Link as ScrollLink } from 'react-scroll'
-import styled, { keyframes }from "styled-components"
 
-// const fade = keyframes`
-//   from {
-//     opacity : 0
-//   } to {
-//     opacity : 1
-//   }
-// `;
+const getBGImgs = props => {
 
-// const DB = styled.section`
-//   animation: ${fade};
-// `;
-
-  const BG = props => {
-    const [pics, changePic] = useState(0);
-
-    // useEffect(() => {
-    //   const interval = setInterval(() => {
-    //     changePic(pics => {
-    //       if(pics === 5) return 0 
-    //       return pics + 1
-    //     })
-    //   }, 10000)
-    //   return () => clearInterval(interval);
-    // }, [])
-
-    return (
-      <StaticQuery
-        query={graphql`
-          query {
-            bannerBackgroundImg : allFile(filter: {sourceInstanceName: {eq: "bannerImgs"}}) {
-              nodes {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  } 
-                }
-              }
-            }
-            agentPic : file(relativePath: {eq: "images/agentPic.jpeg"}, sourceInstanceName: {eq: "assets"}) {
+  return (
+    <StaticQuery
+      query={graphql`
+        query {
+          backgrounds : allFile(filter: {sourceInstanceName: {eq: "bannerImgs"}}) {
+            nodes {
+              relativePath
               childImageSharp {
-                fixed {
-                  src
-                }
+                fluid (quality : 100) {
+                  ...GatsbyImageSharpFluid
+                } 
               }
             }
           }
-        `}
-        render={data => {
-          const [...imgDataArr] = data.bannerBackgroundImg.nodes
-          return (
-            <BackImg
-              Tag="section"
-              id="banner"
-              fluid={imgDataArr[pics].childImageSharp.fluid}
-              fadeIn="soft"
-            >
-              <Banner agentPic={data.agentPic.childImageSharp.fixed.src} />
-            </BackImg>
-          )
-        }}
-      />
-    )
-  }
+          agentPic : file(relativePath: {eq: "images/agentPic.jpeg"}, sourceInstanceName: {eq: "assets"}) {
+            childImageSharp {
+              fixed (width: 300 , quality: 85) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
+      `}
+      render={data => {
+        return (
+          <Banner bgImgs={data} agentPic={data.agentPic.childImageSharp.fixed.src} />
+        )
+      }}
+    />
+  )
+}
 
 const Banner = props => {
-  return (
-    <> 
-      <div style={{height: "100vh"}}>
-        <Cont className="d-flex text-primary border border-primary h-100 flex-column justify-content-center">
-          <Row className="mt-5">
-            <Col xs={8}>
-              <h1 className="text-wrap">If it's the Keys<br/>It's the Keys</h1>
-              <h1 className="text-wrap"> you want<br/> I got</h1>
-            </Col>
-            <Col xs={4} className="">
-              <Image src={props.agentPic} roundedCircle/> 
-            </Col>
-          </Row>
-          <Row>
-            <h2 className="mx-auto">eXP Realty in Florida</h2>
-          </Row>
-        </Cont>
-      </div>
+  return ( 
+    <>
+      <section>
+        <div className="vh-100 d-flex flex-column">
+          <Cont className="h-100 d-flex flex-column justify-content-center text-primary">
+            <Row className="w-100">
+              <Col xs={7} className="pl-5 my-auto text-center">
+                <h1 style={{lineHeight: 1.5}} className="d-inline-block text-right text-wrap">If it's the<br/>It's the</h1>
+                <KeysLogo className="mb-5" width="200px" height="200px" />
+                <h1 style={{lineHeight: 1.5}} className="d-inline-block text-left text-wrap"> you want<br/> I got</h1>
+              </Col>
+              <Col xs={5} className="">
+                <div className="ml-auto">
+                  <Image className="float-right" src={props.agentPic} roundedCircle/> 
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <h2 className="mx-auto mt-5">eXP Realty in Florida</h2>
+            </Row>
+          </Cont>
+          <ScrollLink
+            to="one"
+            className="goto-next text-center"
+            activeClass="active"
+            smooth={true}
+            offset={50} 
+            duration={1500}
+            spy={true}
+          >
+            Next
+          </ScrollLink>
+        </div>
+      </section>
+      <BackgroundSlider
+        query={props.bgImgs}
+        initDelay={2} // delay before the first transition (if left at 0, the first image will be skipped initially)
+        transition={4} // transition duration between images
+        duration={8} // how long an image is shown
+        // specify images to include (and their order) according to `relativePath`
+        images={["pic01.jpg", "pic02.jpg", "pic03.jpg", "pic04.jpg", "pic05.jpg", "pic06.jpg"]} 
+        style={{
+          filter: "brightness(40%)"
+        }}
 
-      <ScrollLink
-        to="one"
-        className="goto-next"
-        activeClass="active"
-        smooth={true}
-        offset={50}
-        duration={1500}
-        spy={true}
-      >
-        Next
-      </ScrollLink>
+      />
     </>
   )  
 }
 
-export default BG
+export default getBGImgs
