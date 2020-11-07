@@ -12,16 +12,16 @@ module.exports = {
         link: '/',
       },
       {
-        name: 'Search',
-        link: '/search',
+        name: 'Buy',
+        link: '/underConstruction',
       },
       {
         name: 'Sell',
-        link: '/sell',
+        link: '/underConstruction',
       },
       {
         name: 'Blog',
-        link: '/blog',
+        link: '/underConstruction',
       },
       {
         name: 'Layouts',

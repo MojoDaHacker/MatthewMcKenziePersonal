@@ -2,7 +2,7 @@ import React from 'react'
 import {Form, Button, Col, Row} from 'react-bootstrap'
 
 const houseType = ['Single Family', 'Condo', 'Commercial', 'Land', 'Rentals',
-'Income', 'Villa', 'Townhouse', 'Pending'];
+'Income', 'Villa', 'Townhouse'];
 
 const beds = [1,2,3,4,5]
 const baths = [1,2,3,4,5]
@@ -17,8 +17,8 @@ export default function(props) {
 const searchForm = 
   <Form className="w-100">
     <Form.Row className="">
-      <Form.Group as={Col}>
-        <Form.Control type="text" placeholder="City, Zip, or Addr" />
+      <Form.Group as={Col} xs={3}>
+        <Form.Control className="" type="text" placeholder="City, Zip, or Address" />
       </Form.Group>
 
       <Form.Group as={Col}>
@@ -28,13 +28,13 @@ const searchForm =
       </Form.Group>
 
       <Form.Group as={Col}>  
-        <Form.Control as="select" placeholder="Single Family">
+        <Form.Control as="select" placeholder="Beds">
           {beds.map(val => <option>{val}</option>)}
         </Form.Control>
       </Form.Group>
 
       <Form.Group as={Col}>  
-        <Form.Control as="select" placeholder="Single Family">
+        <Form.Control as="select" placeholder="Baths">
           {baths.map(val => <option>{val}</option>)}
         </Form.Control>
       </Form.Group>
@@ -67,7 +67,7 @@ const newsLetter =
         />
       </Form.Group>
       <Form.Group>
-        <Button>Join Now!</Button>
+        <Button className="btn-secondary">Join Now!</Button>
       </Form.Group>
     </Row>
   </Form> 

@@ -119,7 +119,7 @@ class Header extends React.Component {
                 link.items ? (
                   null
                 ) : (
-                  <Nav.Item><Nav.Link className="text-primary" key={link.name} href={link.link}>{link.name}</Nav.Link></Nav.Item>
+                  <Nav.Item><Nav.Link className="text-primary" as={Link} key={link.name} to={link.link}>{link.name}</Nav.Link></Nav.Item>
                 ))}
             </Nav>
         </Navbar>

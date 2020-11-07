@@ -1,5 +1,7 @@
 import React from 'react'
 import {Container as Cont, Row, Col, Image} from 'react-bootstrap'
+import {ArrowDownShort} from 'react-bootstrap-icons'
+import {TelephoneFill} from 'react-bootstrap-icons'
 import KeysLogo from '../assets/images/logos/keysLogo.inline.svg'
 import BackgroundSlider from 'gatsby-image-background-slider'
 import {graphql, StaticQuery} from 'gatsby';
@@ -50,6 +52,11 @@ const Banner = props => {
                 <h1 style={{lineHeight: 1.5}} className="d-inline-block text-right text-wrap">If it's the<br/>It's the</h1>
                 <KeysLogo className="mb-5" width="200px" height="200px" />
                 <h1 style={{lineHeight: 1.5}} className="d-inline-block text-left text-wrap"> you want<br/> I got</h1>
+                <Row>
+                  <div className="mx-auto">
+                    <h4><TelephoneFill size={35} /> 786-868-8452</h4>
+                  </div>
+                </Row>
               </Col>
               <Col xs={5} className="">
                 <div className="ml-auto">
@@ -62,15 +69,15 @@ const Banner = props => {
             </Row>
           </Cont>
           <ScrollLink
-            to="one"
-            className="goto-next text-center"
+            to="scrollTarget"
+            className="text-center"
             activeClass="active"
             smooth={true}
-            offset={50} 
-            duration={1500}
+            offset={-5} 
+            duration={2000}
             spy={true}
           >
-            Next
+            <ArrowDownShort size={35} />
           </ScrollLink>
         </div>
       </section>
@@ -82,7 +89,7 @@ const Banner = props => {
         // specify images to include (and their order) according to `relativePath`
         images={["pic01.jpg", "pic02.jpg", "pic03.jpg", "pic04.jpg", "pic05.jpg", "pic06.jpg"]} 
         style={{
-          filter: "brightness(40%)"
+          filter: "brightness(60%)"
         }}
 
       />

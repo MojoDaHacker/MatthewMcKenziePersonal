@@ -5,7 +5,7 @@ import Fade from 'react-reveal/Fade'
 
 const Five = props => (
     <Fade duration={2500}>
-      <Jumbotron className="container">
+      <Jumbotron className="container bg-primary">
         <Row as="header">
           <Col xs={4} className="text-center">
             <h2>Stay Connected</h2>

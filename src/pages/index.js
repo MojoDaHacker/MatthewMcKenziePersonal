@@ -6,7 +6,6 @@ import Banner from '../components/Banner'
 import One from '../components/One'
 import Two from '../components/Two'
 import Three from '../components/Three'
-import Four from '../components/Four'
 import Five from '../components/Five'
 
 class Home extends React.Component {
@@ -20,12 +19,11 @@ class Home extends React.Component {
             { name: 'description', content: 'Real Estate Services by Matthew McKenzie' },
             { name: 'keywords', content: 'Real Estate, Investing, Buying, Selling' },
           ]}
-        ></Helmet>
+        />
         <Banner />
         <One />
         <Two />
         <Three />
-        <Four />
         <Five />
       </Layout>
     )

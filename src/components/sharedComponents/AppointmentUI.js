@@ -1,75 +1,104 @@
-import React from 'react'
-import { Container as Cont, Row, Col, Button, Card,
-          ListGroup } from 'react-bootstrap'
+import React, { useRef, useEffect } from 'react'
+import { Container as Cont, Row, Col, Button } from 'react-bootstrap'
+import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons'
+import anime from 'animejs'
+import ReactAnime from 'react-anime'
+import styled from 'styled-components'
+
+const handleControl = () => {
+}
+
+const theta = [0, Math.PI / 6, Math.PI / 3, Math.PI / 2];
+
+const Circle = styled.div`
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  `
+  
+  const Center = styled.div`
+  border-radius: 50%;
+  position: relative;
+  right: 25%;
+  width: 25%;
+  height: 25%;
+  transform: rotate(${(Math.PI / 6) * (180 / Math.PI)}deg);
+`
+const CarouselItems = styled.div`
+  white-space: nowrap;
+  overflow: visible;
+  position: absolute;
+  bottom: ${props => Math.round(props.radius * Math.sin(props.deg))}px;
+  left: ${props => Math.round(props.radius * Math.cos(props.deg))}px;
+  transform-origin: top left;
+  transform: rotate(-${props => { return props.rotate * (180 / Math.PI)}}deg)
+`
+
+const Appointment = props => {
+  const pathRef = useRef(null);
+  // const [carouselItem, changeCarouselItem] = useState(0);
+  // const svgPickerPath = 
+  // <svg id="pickerPath" width="600px" height="600px">
+  //     <path stroke="red" ref={pathRef} fill="none" d="M 350 450 A 50 50 0 0 0 350 150" />
+  //   </svg>;
+  useEffect(() => {
+    const path = anime.path(pathRef.current);
+    // pathRef.current = anime({
+    //   targets: '#pickerPath',
+    //   translateX: '450px',
+    //   easing: 'linear',
+    //   duration: 2000,
+    //   loop: true
+    // })
+  })
+
+  const items = [
+    'Home Buying',
+    'Home Listing',
+    'Rental Management',
+    'Real Estate Investing'
+  ]
 
 
-
-const Appointment = props => (
-  <Card>
-    <Cont className="pl-5" fluid>
+  
+  return (
+    <Cont className="pl-5 p-4 appointmentUI" fluid>
       <Row className="pb-3">
         <h1> Book Appointments Via Zoom</h1>
       </Row>
-      <ListGroup variant="flush" className="pb-5">
-        <ListGroup.Item>
-          <Row>
-            <Col xs={9}>
-              <h3> Appointments for Home Listing Consultation</h3>
-              <p>Listing a house isn't hard, any agent could put your house on the MLS
-              Usually people hire agents to skip the hassle of wasting time on unqualified buyers
-              negotiating with other agents, and most importantly getting the best price for your home.</p>
-            </Col>
-            <Col xs={3}>
-              <Button>Book Appointment</Button>
-            </Col>
-          </Row>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <Row>
-            <Col xs={9}>
-              <h3> Appointments for Home Buying Consultation</h3>
-              <p>Buying a home is probably the most important process you will go through in your life.
-              As your representing agent, my responsibilty would be to guide you to your best choice of home,
-              avoiding pitfalls and scams such as Title Scams, Undisclosed Costs, and Interest Rate surprises.</p>
-            </Col>
-            <Col xs={3}>
-              <Button>Book Appointment</Button>
-            </Col>
-          </Row>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <Row>
-            <Col xs={9}>
-              <h3> Appointments for Real Estate Management Consultation</h3>
-              <p>If you currently own or are considering buying a rental, and you need some help to manage it.
-              Successful management of your real estate requires skillful stewardship of the physical space, tenant
-              relationships and your reputation in the marketplace. By partnering with us at EXP, you will have the attention
-              of best-in-class advisors who will manage the ever-changing needs of your property to maximize value and tenant
-              retention, freeing you up to focus on your business.</p>
-            </Col>
-            <Col xs={3}>
-              <Button>Book Appointment</Button>
-            </Col>
-          </Row>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <Row>
-            <Col xs={9}>
-              <h3> Appointments for Real Estate Investing Consultation</h3>
-              <p>Whether you are determining if real estate investing is for you, just getting started with your first investment
-              property or deciding to buy or sell a property, we offer real estate consultation services to help you move forward.
-              Our experience, expertise and professional network allow us to provide you with in-depth analyses and strategy to 
-              customize an investment plan tailored to your needs. </p>
-            </Col>
-            <Col xs={3}>
-              <Button>Book Appointment</Button>
-            </Col>
-          </Row>
-        </ListGroup.Item>
-      </ListGroup>
+
+      <Row className="text-center overflow-hidden">
+        <Col className="my-auto" xs="auto">
+          <div className="d-inline-block">
+            <Button link="variant" className="my-3 d-block"><CaretUpFill className="d-block" size={50}/></Button>
+            <Button link="variant" className="my-3 d-block"><CaretDownFill className="color-none d-block" size={50}/></Button>
+          </div>
+        </Col>
+        <Col>
+          <Circle>
+            <Center>
+              {items.map((val, i) => (
+                <CarouselItems key={i} rotate={theta[i]} radius={150} deg={theta[i]}><p>{val}</p></CarouselItems>
+              ))}
+            </Center>
+          </Circle>
+        </Col>
+        <Col>
+          <div className="my-auto">
+            <p>Curabitur convallis hendrerit sapien, sed maximus velit vestibulum in.
+              Aliquam nisi nisi, lobortis quis ipsum eget, vulputate feugiat turpis.
+              Cras eget arcu ornare, aliquam ex quis, pulvinar ex.
+              Orci varius natoque penatibus et magnis dis parturient montes.
+            </p>
+            <Button className="mt-2">Book Now!</Button>
+          </div>
+        </Col>
+      </Row>
     </Cont>
-  </Card>
-)
+  )
+}
 
 
 export default Appointment

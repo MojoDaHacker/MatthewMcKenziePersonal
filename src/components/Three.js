@@ -13,17 +13,6 @@ const Three = props => (
       <Cont className="min-vh-100 p-5">
         <Appointment  />
       </Cont>
-      <ScrollLink
-        to="one"
-        className="goto-next text-center"
-        activeClass="active"
-        smooth={true}
-        offset={50}
-        duration={1500}
-        spy={true}
-      >
-        Next
-      </ScrollLink>
     </div>
 
   </section>
