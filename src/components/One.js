@@ -6,19 +6,19 @@ import Form from './sharedComponents/Form.js'
 
 
 const One = props => {
-  const getFeaturedHomes = useStaticQuery(graphql`
-      query {
-        allImageSharp(filter: {original: {src: {regex: "/featuredHome/"}}}) {
-          edges {
-            node {
-              fixed(width: 150) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-          }
-        }
-      }
-    `)
+  // const getFeaturedHomes = useStaticQuery(graphql`
+  //     query {
+  //       allImageSharp(filter: {original: {src: {regex: "/featuredHome/"}}}) {
+  //         edges {
+  //           node {
+  //             fixed(width: 150) {
+  //               ...GatsbyImageSharpFixed
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `)
   console.log(getFeaturedHomes)
 
   return (

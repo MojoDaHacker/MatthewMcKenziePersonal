@@ -1,10 +1,11 @@
-import React from 'react'
-import {Container as Cont, Row, Col, Image} from 'react-bootstrap'
+import React, {useState} from 'react'
+import {Container as Cont, Row, Col, Image, ListGroup, Button} from 'react-bootstrap'
 import {ArrowDownShort} from 'react-bootstrap-icons'
-import {TelephoneFill} from 'react-bootstrap-icons'
-import KeysLogo from '../assets/images/logos/keysLogo.inline.svg'
-import BackgroundSlider from 'gatsby-image-background-slider'
+import {EnvelopeFill, Linkedin, Github} from 'react-bootstrap-icons'
 import {graphql, StaticQuery} from 'gatsby';
+import Progress from './sharedComponents/ProgressComponent.js'
+import Portfolio from './Portfolio.js'
+import { motion } from 'framer-motion'
 import { Link as ScrollLink } from 'react-scroll'
 
 const getBGImgs = props => {
@@ -13,16 +14,6 @@ const getBGImgs = props => {
     <StaticQuery
       query={graphql`
         query {
-          backgrounds : allFile(filter: {sourceInstanceName: {eq: "bannerImgs"}}) {
-            nodes {
-              relativePath
-              childImageSharp {
-                fluid (quality : 100) {
-                  ...GatsbyImageSharpFluid
-                } 
-              }
-            }
-          }
           agentPic : file(relativePath: {eq: "images/agentPic.jpeg"}, sourceInstanceName: {eq: "assets"}) {
             childImageSharp {
               fixed (width: 300 , quality: 85) {
@@ -34,7 +25,12 @@ const getBGImgs = props => {
       `}
       render={data => {
         return (
-          <Banner bgImgs={data} agentPic={data.agentPic.childImageSharp.fixed.src} />
+          <Banner 
+            bgImgs={data} 
+            agentPic={data.agentPic.childImageSharp.fixed.src} 
+            setShowcase={props.setShowcase} 
+            portfolioItems={props.portfolioItems} 
+          />
         )
       }}
     />
@@ -42,33 +38,97 @@ const getBGImgs = props => {
 }
 
 const Banner = props => {
+  const [portfolio, showPortfolio] = useState(false);
+
+  const buttonPos = [2,-2];
+
+  const variants = {
+    hidden: {
+      scale: 0,
+      opactiy: 0,
+      display: "none"
+    },
+    visible: {
+      scale: 1,
+      opactiy: 1
+    }
+  }
+
+
   return ( 
     <>
-      <section>
+      <section style={{backgroundColor: "black"}}>
         <div className="vh-100 d-flex flex-column">
           <Cont className="h-100 d-flex flex-column justify-content-center text-primary">
-            <Row className="w-100">
-              <Col xs={7} className="pl-5 my-auto text-center">
-                <h1 style={{lineHeight: 1.5}} className="d-inline-block text-right text-wrap">If it's the<br/>It's the</h1>
-                <KeysLogo className="mb-5" width="200px" height="200px" />
-                <h1 style={{lineHeight: 1.5}} className="d-inline-block text-left text-wrap"> you want<br/> I got</h1>
-                <Row>
-                  <div className="mx-auto">
-                    <h4><TelephoneFill size={35} /> 786-868-8452</h4>
-                  </div>
-                </Row>
+            <Row className="w-100" onMouseOver={props => showPortfolio(false)} >
+              <Col xs={5}>
+                <div className="text-center">
+                  <h2 className="mx-auto">Matthew McKenzie</h2>
+                </div>
+                <div className="text-center">
+                  <Image className="" src={props.agentPic} roundedCircle/> 
+                </div>
+                <ListGroup className="p-2">
+                  <ListGroup.Item className="bg-transparent border-0"><EnvelopeFill className="m-2" />mojomckenzie@knights.ucf.edu</ListGroup.Item>
+                  <ListGroup.Item className="bg-transparent border-0"><Linkedin className="m-2" />linkedin.com/in/matthew-mckenzie-5397401a5</ListGroup.Item>
+                  <ListGroup.Item className="bg-transparent border-0"><Github className="m-2" />github.com/MojoDaHacker</ListGroup.Item>
+                </ListGroup>
               </Col>
-              <Col xs={5} className="">
-                <div className="ml-auto">
-                  <Image className="float-right" src={props.agentPic} roundedCircle/> 
+              <Col xs={7} className="d-flex flex-column">
+                <div className="text-center">
+                  <h2 className="text-center">Full Stack Developer | UI/UX Designer</h2>
+                  <p>
+                    Developing websites and applications for the past 5 years using web technologies of the usual
+                    HTML, CSS, and JS. In addition to technologies, I have gained experience in several frameworks
+                    such as React, Node, Codeignitor, Laravel. However, I'm mostly familiar with the MERN Stack frameworks
+                    to create web products.
+                  </p>
+                </div>
+                <div className="d-flex flex-column justify-content-center h-100 w-75 mx-auto">
+                  <ListGroup>
+                    <ListGroup.Item className="bg-transparent d-flex">
+                      <div className="text-center w-25">M</div>
+                      <div className=" position-relative overflow-hidden w-100"><Progress num={4}/></div>
+                    </ListGroup.Item>
+                    <ListGroup.Item className="bg-transparent d-flex">
+                      <div className="text-center w-25">E</div>
+                      <div className=" position-relative overflow-hidden w-100"><Progress num={3}/></div>
+                    </ListGroup.Item>
+                    <ListGroup.Item className="bg-transparent d-flex">
+                      <div className="text-center w-25">R</div>
+                      <div className=" position-relative overflow-hidden w-100"><Progress num={5}/></div>
+                    </ListGroup.Item>
+                    <ListGroup.Item className="bg-transparent d-flex">
+                      <div className="text-center w-25">N</div>
+                      <div className=" position-relative overflow-hidden w-100"><Progress num={4}/></div>
+                    </ListGroup.Item>
+                  </ListGroup>
                 </div>
               </Col>
             </Row>
-            <Row>
-              <h2 className="mx-auto mt-5">eXP Realty in Florida</h2>
+            <Row className="w-100">
+              <motion.div className="mx-auto d-flex justify-content-center">
+                <motion.div className="" animate={portfolio ? "hidden" : "visible"} variants={variants}>
+                  <Button
+                    onMouseOver={() => showPortfolio(true)}
+                    className="rounded-pill"
+                  >
+                    Portfolio
+                  </Button>
+                </motion.div>
+                {
+                  props.portfolioItems.map((val, i) => {
+                    return (
+                      <motion.div animate={portfolio ? "visible" : "hidden"} variants={variants}>
+                        <Button className="mx-2 rounded-pill" key={i} onClick={() => props.setShowcase(Portfolio, i)}>{val}</Button>
+                      </motion.div>
+                    )
+                  })
+                }
+              </motion.div>
             </Row>
           </Cont>
-          <ScrollLink
+          {/* <ScrollLink
             to="scrollTarget"
             className="text-center"
             activeClass="active"
@@ -78,21 +138,9 @@ const Banner = props => {
             spy={true}
           >
             <ArrowDownShort size={35} />
-          </ScrollLink>
+          </ScrollLink> */}
         </div>
       </section>
-      <BackgroundSlider
-        query={props.bgImgs}
-        initDelay={2} // delay before the first transition (if left at 0, the first image will be skipped initially)
-        transition={4} // transition duration between images
-        duration={8} // how long an image is shown
-        // specify images to include (and their order) according to `relativePath`
-        images={["pic01.jpg", "pic02.jpg", "pic03.jpg", "pic04.jpg", "pic05.jpg", "pic06.jpg"]} 
-        style={{
-          filter: "brightness(60%)"
-        }}
-
-      />
     </>
   )  
 }

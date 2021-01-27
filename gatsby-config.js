@@ -71,6 +71,7 @@ module.exports = {
     ],
   },
   plugins: [
+    'gatsby-transformer-json',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
@@ -105,6 +106,20 @@ module.exports = {
       options: {
         path: path.join(__dirname, `src`, `assets`, `images`, `bannerSlideshow`),
         name: 'bannerImgs',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: path.join(__dirname, `src`, `assets`, `images`, `portfolioImg`),
+        name: 'portfolioImgs',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: path.join(__dirname, `src`, `assets`, `json`),
+        name: 'JSON',
       },
     },
     {

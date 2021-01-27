@@ -1,5 +1,4 @@
 import React from 'react'
-import pic04 from '../assets/images/pic04.jpg'
 import { Container as Cont, Row, Col } from 'react-bootstrap'
 import Appointment from './sharedComponents/AppointmentUI.js'
 import { Link as ScrollLink } from 'react-scroll'
@@ -11,7 +10,7 @@ const Three = props => (
 
     <div className="d-flex flex-column">
       <Cont className="min-vh-100 p-5">
-        <Appointment  />
+        {/* <Appointment  /> */}
       </Cont>
     </div>
 

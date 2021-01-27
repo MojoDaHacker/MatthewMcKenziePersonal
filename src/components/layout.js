@@ -32,12 +32,8 @@ const Layout = ({ children, ...props }) => (
       <React.Fragment>
         <div>
           <div>
-            <Header
-              menuLinks={data.site.siteMetadata.menuLinks}
-              siteTitle={data.site.siteMetadata.title}
-            />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </div>
       </React.Fragment>

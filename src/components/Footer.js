@@ -17,7 +17,6 @@ const Footer = props => (
       </Navbar>
       <Navbar className="w-100 mx-auto copyright" variant="flush" horizontal>
         <Nav className="mx-auto">
-          <Nav.Item className="mr-3"><Navbar.Text>&copy; Untitled. All rights reserved.</Navbar.Text></Nav.Item>
           <Nav.Item><Navbar.Text>Demo Images: <a href="https://unsplash.com">Unsplash</a></Navbar.Text></Nav.Item>
         </Nav>
       </Navbar>
