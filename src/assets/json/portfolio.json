@@ -1,0 +1,112 @@
+[
+  {
+    "show": true,
+    "name": "OpenHouseKit",
+    "title": "OpenHouse Kit",
+    "pictures": [
+      {
+        "name": "",
+        "caption": false
+      }
+    ],
+    "textContent":[
+      [
+        "This is my first ever Mongo, Express, React, Node project. ",
+        "When I first started getting into react, I took it upon myself ",
+        "to not just create random games or snippets of code that won't ",
+        "make any impact to anyone's life. I sought out an experience ",
+        "and challenge that I could set for myself and create a new tool ",
+        "or app that someone other than myself could use in their daily ",
+        "life. So I created Open House Kit. It's a small lightweight ",
+        "application that a real estate agent can use as a digital ",
+        "sign in page for the open houses they host."
+      ],
+      [
+        "It provides features such as weather updates, performance analysis, ",
+        "and with a premium account if offers more interaction with visitors ",
+        "through text notifications and lead follow-up. It's not a fully fledged ",
+        "CRM application, but it'll get the job done for open house."
+      ],
+      ["The Application is still in development, but soon to be fully produced and deployed"]
+    ],
+    "codeSrc": ""
+  },
+  {
+    "show": false,
+    "name": "VentureApp",
+    "title": "Venture App",
+    "pictures": [
+      {
+        "src": false,
+        "caption": false
+      }
+    ],
+    "textContent":[
+      [
+        "This is a product recently designed by my colleagues and I ",
+        "as a previous project. Simply think about a project idea and ",
+        "brainstorm about what features & functions it could have, how ",
+        "technology could be used in new ways, or a better way to do ",
+        "something, a new market or a new user community to serve, an ",
+        "important problem to solve!"
+      ],
+      [
+        "Conduct research in the market of to find existing products ",
+        "that represent similar ideas to your group's idea. The ",
+        "rational is to use this research as a starting point for ",
+        "design. We would use techniques to identify the strengths and ",
+        "weaknesses of these companies, and find the current market trends ",
+        "that would need to be considered for our own product."
+      ],
+      [
+        "Our Idea starts as a dating app that doubles back as an event finder app. It pairs potential ",
+        "matches by your interests of exploring the local community and location. Instead of ",
+        "allowing your first communication to be through messaging, you will be encouraged to ",
+        "first choose a date and start your first point of communication there.  Users can span from local ",
+        "residents and college students to people who are just passing through ( business men, ",
+        "politicians, tourists, etc ). Really it doesn't matter who the person is, it doesn't even have ",
+        "to be a date, it can be used for people moving to new towns trying to find new ",
+        "companions to explore their new surroundings. Whatever the situation may be the  ",
+        "clear motive is to push people to not forget the outside world and to push for  ",
+        "physical communication and interaction through their next adventure."
+      ]
+    ],
+    "codeSrc": false
+  },
+  {
+    "show": false,
+    "name": "SWANK",
+    "title": "SWANK Online Retailer",
+    "pictures": [
+      {
+        "src": false,
+        "caption": false
+      }
+    ],
+    "textContent":[
+      [
+        "SWANK is an online retailer that needed a mockup design of their landing page.",
+        "This landing page would set the tone of the rest of the website."
+      ] 
+    ],
+    "codeSrc": false
+  },
+  {
+    "show": false,
+    "name": "Trec",
+    "title": "The Real Estate Company",
+    "pictures": [
+      {
+        "src": false,
+        "caption": false
+      }
+    ],
+    "textContent":[
+      [
+        "SWANK is an online retailer that needed a mockup design of their landing page.",
+        "This landing page would set the tone of the rest of the website."
+      ] 
+    ],
+    "codeSrc": false
+  }
+]
