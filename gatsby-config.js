@@ -111,8 +111,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: path.join(__dirname, `src`, `assets`, `images`, `portfolioImg`),
-        name: 'portfolioImgs',
+        path: path.join(__dirname, `src`, `assets`, `images`, `portfolioImg`, "OpenHouseKit"),
+        name: 'OpenHouseKit',
       },
     },
     {
