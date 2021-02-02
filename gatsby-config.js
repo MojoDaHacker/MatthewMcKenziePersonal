@@ -102,6 +102,22 @@ module.exports = {
       }
     },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: path.join(__dirname, `src`, `assets`, `images`, `logos`),
+          options: {
+            rule: {
+              include: /\.inline\.svg$/
+            },
+            props: {
+              className: "keySVG"
+            },
+          }
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: path.join(__dirname, `src`, `assets`, `images`, `bannerSlideshow`),

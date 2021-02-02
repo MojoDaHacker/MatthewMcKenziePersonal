@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Container, Row, Col, Carousel, Button} from 'react-bootstrap'
 import { CaretLeftFill, CaretRightFill } from 'react-bootstrap-icons'
 import { useStaticQuery, graphql } from 'gatsby'
+import Logo from '../assets/images/logos/OpenHouseKit.inline.svg'
 import GatsbyImg from "gatsby-image"
 
 
@@ -9,7 +10,7 @@ const Portfolio = ({content, contentKey}) => {
   const [carouselIndex, setIndex] = useState(0)
   const data = useStaticQuery(graphql`
     query portfolioData {
-      OpenHouseKit : allFile(filter: {relativeDirectory: {regex: "/OpenHouse/"}}) {
+      OpenHouseKit: allFile(filter: {sourceInstanceName: {regex: "/OpenHouseKit/"}}, sort: {fields: name}) {
         nodes {
           childImageSharp {
             id
@@ -17,32 +18,14 @@ const Portfolio = ({content, contentKey}) => {
               ...GatsbyImageSharpFluid
             }
           }
-        }
-      }
-      VentureApp : allFile(filter: {relativeDirectory: {regex: "/Venture/"}}) {
-        nodes {
-          childImageSharp {
-            id
-            fluid {
-              src
-            }
-          }
-        }
-      }
-      Trec : allFile(filter: {relativeDirectory: {regex: "/Trec/"}}) {
-        nodes {
-          childImageSharp {
-            id
-            fluid {
-              src
-            }
-          }
+          sourceInstanceName
+          name
         }
       }
     }
   `)
   const key = Object.keys(data).find(elem => elem == content[contentKey].name)
-  console.log(carouselIndex)
+  console.log(data[key])
 
   return ( 
     <Container className="pt-5 min-vh-100">
@@ -54,7 +37,9 @@ const Portfolio = ({content, contentKey}) => {
           </Row>
           <Row>
             <Col xs={3} className="text-center my-auto">
-              <h1>ICON</h1>
+              <div className="bg-primary rounded-lg">
+                <Logo />
+              </div>
             </Col>
             {contentVal.pictures.find(obj => obj.src != false) == undefined ? null : (
               <Col className="p-3">

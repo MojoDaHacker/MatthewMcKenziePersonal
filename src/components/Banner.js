@@ -4,6 +4,7 @@ import {ArrowDownShort} from 'react-bootstrap-icons'
 import {EnvelopeFill, Linkedin, Github} from 'react-bootstrap-icons'
 import {graphql, StaticQuery} from 'gatsby';
 import Progress from './sharedComponents/ProgressComponent.js'
+import Canvas from './sharedComponents/LightingBoltCanvas'
 import Portfolio from './Portfolio.js'
 import { motion } from 'framer-motion'
 import { Link as ScrollLink } from 'react-scroll'
@@ -40,8 +41,6 @@ const getBGImgs = props => {
 const Banner = props => {
   const [portfolio, showPortfolio] = useState(false);
 
-  const buttonPos = [2,-2];
-
   const variants = {
     hidden: {
       scale: 0,
@@ -58,6 +57,7 @@ const Banner = props => {
   return ( 
     <>
       <section style={{backgroundColor: "black"}}>
+        {/* <Canvas /> */}
         <div className="vh-100 d-flex flex-column">
           <Cont className="h-100 d-flex flex-column justify-content-center text-primary">
             <Row className="w-100" onMouseOver={props => showPortfolio(false)} >

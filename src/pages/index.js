@@ -4,6 +4,7 @@ import '../assets/scss/App.scss'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
 import Banner from '../components/Banner'
+import Canvas from '../components/sharedComponents/LightingBoltCanvas'
 
 class Home extends React.Component {
   constructor(props){
@@ -19,7 +20,6 @@ class Home extends React.Component {
   render() {
     const portfolioContent = this.props.data.jsonContent.nodes
     const portfolioItems = portfolioContent.map(val => val.name)
-    console.log(portfolioItems)
     return (
       <Layout location="/">
         <Helmet
