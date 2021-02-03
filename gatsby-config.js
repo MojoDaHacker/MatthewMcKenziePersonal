@@ -10,63 +10,6 @@ module.exports = {
         name: 'Home',
         link: '/',
       },
-      {
-        name: 'Buy',
-        link: '/underConstruction',
-      },
-      {
-        name: 'Sell',
-        link: '/underConstruction',
-      },
-      {
-        name: 'Blog',
-        link: '/underConstruction',
-      },
-      {
-        name: 'Layouts',
-        link: '#',
-        items: [
-          {
-            name: 'Left Sidebar',
-            link: '/left-sidebar',
-          },
-          {
-            name: 'Right Sidebar',
-            link: '/right-sidebar',
-          },
-          {
-            name: 'No Sidebar',
-            link: '/no-sidebar',
-          },
-          {
-            name: 'SubMenu',
-            link: '#',
-            items: [
-              {
-                name: 'Option 1',
-                link: '#',
-              },
-              {
-                name: 'Option 2',
-                link: '#',
-              },
-              {
-                name: 'Option 3',
-                link: '#',
-              },
-              {
-                name: 'Option 4',
-                link: '#',
-              },
-            ],
-          },
-        ],
-      },
-      // {
-      //   name: 'Sign Up',
-      //   link: '#',
-      //   cl: 'button primary',
-      // },
     ],
   },
   plugins: [
