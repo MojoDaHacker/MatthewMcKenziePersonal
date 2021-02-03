@@ -36,20 +36,4 @@ class Home extends React.Component {
   }
 }
 
-export const query = graphql`
-  query {
-    jsonContent : allPortfolioJson(filter: {show: {eq: true}}) {
-      nodes {
-        name
-        title
-        pictures {
-          src
-          caption
-        }
-        textContent
-      }
-    }
-  }
-`
-
 export default Home
