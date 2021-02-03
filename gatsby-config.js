@@ -1,7 +1,6 @@
 const path = require(`path`);
 
 module.exports = {
-  //pathPrefix: `/mygatsby`,
   siteMetadata: {
     title: 'McKenzie\'s Keys',
     author: 'Matthew McKenzie',
