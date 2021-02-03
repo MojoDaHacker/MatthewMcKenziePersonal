@@ -4,7 +4,6 @@ import '../assets/scss/App.scss'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
 import Banner from '../components/Banner'
-import Canvas from '../components/sharedComponents/LightingBoltCanvas'
 
 class Home extends React.Component {
   constructor(props){

@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-landed-v2",
+  "name": "Matthew's Portfolio Site",
   "description": "Gatsby Starter - Landed V2",
   "version": "1.0.0",
-  "author": "Vasilis Gakis",
+  "author": "Matthew Mckenzie",
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
     "bootstrap": "^4.5.3",
