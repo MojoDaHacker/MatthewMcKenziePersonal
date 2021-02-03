@@ -5,7 +5,7 @@
     "title": "OpenHouse Kit",
     "pictures": [
       {
-        "name": "",
+        "src": false,
         "caption": false
       }
     ],
@@ -69,8 +69,7 @@
         "clear motive is to push people to not forget the outside world and to push for  ",
         "physical communication and interaction through their next adventure."
       ]
-    ],
-    "codeSrc": false
+    ]
   },
   {
     "show": false,
@@ -87,8 +86,7 @@
         "SWANK is an online retailer that needed a mockup design of their landing page.",
         "This landing page would set the tone of the rest of the website."
       ] 
-    ],
-    "codeSrc": false
+    ]
   },
   {
     "show": false,
@@ -105,7 +103,6 @@
         "SWANK is an online retailer that needed a mockup design of their landing page.",
         "This landing page would set the tone of the rest of the website."
       ] 
-    ],
-    "codeSrc": false
+    ]
   }
 ]
