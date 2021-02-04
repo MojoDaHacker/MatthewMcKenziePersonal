@@ -5,7 +5,7 @@
     "title": "OpenHouse Kit",
     "pictures": [
       {
-        "src": false,
+        "src": true,
         "caption": false
       }
     ],

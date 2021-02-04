@@ -4,13 +4,13 @@ module.exports = {
   siteMetadata: {
     title: 'McKenzie\'s Keys',
     author: 'Matthew McKenzie',
-    description: 'Real Estate Services offer by Matthew McKenzie',
+    description: 'Matthew McKenzie\'s Portfolio Site',
     menuLinks: [
       {
         name: 'Home',
         link: '/',
       },
-    ],
+    ]
   },
   plugins: [
     'gatsby-transformer-json',

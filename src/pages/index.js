@@ -1,5 +1,4 @@
 import React from 'react'
-import { graphql } from "gatsby";
 import '../assets/scss/App.scss'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
@@ -17,7 +16,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const portfolioContent = this.props.data.jsonContent.nodes
+    const portfolioContent = this.props.data.allPortfolioJson.nodes
     const portfolioItems = portfolioContent.map(val => val.name)
     return (
       <Layout location="/">
@@ -35,5 +34,27 @@ class Home extends React.Component {
     )
   }
 }
+
+export const query = graphql`
+  query HomePageQuery {
+    site {
+      siteMetadata {
+        description
+      }
+    }
+    allPortfolioJson(filter: {show: {eq: true}}) {
+      nodes {
+        id
+        name
+        title
+        pictures {
+          src
+          caption
+        }
+        textContent
+      }
+    }
+  }
+`
 
 export default Home

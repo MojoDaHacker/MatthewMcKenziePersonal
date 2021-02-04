@@ -24,14 +24,14 @@ const Portfolio = ({content, contentKey}) => {
       }
     }
   `)
-  const key = Object.keys(data).find(elem => elem == content[contentKey].name)
   console.log(data[key])
-
+  const key = Object.keys(data).find(elem => elem == content[contentKey].name)
   return ( 
     <Container className="pt-5 min-vh-100">
       {content.map((contentVal, i) => (
         i !== contentKey ? null : 
         <>
+        {console.log(contentVal)}
           <Row>
             <h1>{contentVal.title}</h1>
           </Row>
@@ -41,7 +41,7 @@ const Portfolio = ({content, contentKey}) => {
                 <Logo />
               </div>
             </Col>
-            {contentVal.pictures.find(obj => obj.src != false) == undefined ? null : (
+            {contentVal.pictures.find(obj => obj.src !== false) == undefined ? null : (
               <Col className="p-3">
                 <div className="d-flex flex-row">
                   <div className="my-auto">
