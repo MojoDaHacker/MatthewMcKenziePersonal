@@ -7,7 +7,6 @@ import Progress from './sharedComponents/ProgressComponent.js'
 import Canvas from './sharedComponents/LightingBoltCanvas'
 import Portfolio from './Portfolio.js'
 import { motion } from 'framer-motion'
-import { Link as ScrollLink } from 'react-scroll'
 
 const getBGImgs = props => {
 
@@ -128,17 +127,6 @@ const Banner = props => {
               </motion.div>
             </Row>
           </Cont>
-          {/* <ScrollLink
-            to="scrollTarget"
-            className="text-center"
-            activeClass="active"
-            smooth={true}
-            offset={-5} 
-            duration={2000}
-            spy={true}
-          >
-            <ArrowDownShort size={35} />
-          </ScrollLink> */}
         </div>
       </section>
     </>
