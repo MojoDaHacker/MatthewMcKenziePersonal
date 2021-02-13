@@ -8,7 +8,7 @@
 
 
 exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, actions }) => {
-  if (stage === "develop-html") {
+  if (stage === "develop-html"|| stage === "build-html") {
     actions.setWebpackConfig({
       module: {
         rules: [
