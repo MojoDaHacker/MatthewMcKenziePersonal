@@ -1,20 +1,12 @@
 import React, {useRef, useEffect} from 'react'
-import Paper, {Raster, Point, Size, Symbol} from 'paper/dist/paper-core'
-
-
-//create image from dataURI from props
-//set Ref for canvas
-//once siblingHeight(neede to match height of sibling) is set and image is loaded
-//  run draw functions
-
-
+import paper, {Raster, Point, Symbol} from 'paper/dist/paper-core'
 
 const SVGBackgroundAnimation = props => {
   const bgRef = useRef(false)
   
-  const initCanvas = () => {
-    const canvas = bgRef.current
-    if(Paper.project == null) Paper.setup(canvas)
+  const houseCanvas = () => {
+    const Paper =  new paper.PaperScope()
+    if(Paper.project == null) Paper.setup(bgRef.current)
     
     const image = new Image();
     image.src = props.img
@@ -39,14 +31,12 @@ const SVGBackgroundAnimation = props => {
   }
   
   useEffect(() => {
-    initCanvas()
-  },[])
+    houseCanvas()
+  }, [])
   
 
   return (
-    <canvas ref={bgRef} className={props.className} width={window.innerWidth} height={window.innerHeight}>
-
-    </canvas>
+    <canvas ref={bgRef} width={typeof window !== 'undefined' && window.innerWidth} height={typeof window !== 'undefined' && window.innerHeight}></canvas>
   )
 }
 

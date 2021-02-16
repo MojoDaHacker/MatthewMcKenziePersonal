@@ -4,7 +4,7 @@ import {ArrowDownShort} from 'react-bootstrap-icons'
 import {EnvelopeFill, Linkedin, Github} from 'react-bootstrap-icons'
 import {graphql, StaticQuery} from 'gatsby';
 import Progress from './sharedComponents/ProgressComponent.js'
-import Canvas from './sharedComponents/LightingBoltCanvas'
+// import Canvas from './sharedComponents/LightningCanvas.js'
 import Portfolio from './Portfolio.js'
 import { motion } from 'framer-motion'
 
