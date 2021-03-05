@@ -9,4 +9,4 @@ yarn.lock
 /public
 
 #env variables
-.env.*
+# .env.*
