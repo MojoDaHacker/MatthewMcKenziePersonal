@@ -1,4 +1,8 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 const path = require(`path`);
+
 
 module.exports = {
   siteMetadata: {
@@ -15,6 +19,14 @@ module.exports = {
   plugins: [
     'gatsby-transformer-json',
     'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `wngrvjnbgulo`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

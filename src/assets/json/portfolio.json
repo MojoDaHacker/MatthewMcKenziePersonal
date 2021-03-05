@@ -8,26 +8,6 @@
         "src": true,
         "caption": false
       }
-    ],
-    "textContent":[
-      [
-        "This is my first ever Mongo, Express, React, Node project. ",
-        "When I first started getting into react, I took it upon myself ",
-        "to not just create random games or snippets of code that won't ",
-        "make any impact to anyone's life. I sought out an experience ",
-        "and challenge that I could set for myself and create a new tool ",
-        "or app that someone other than myself could use in their daily ",
-        "life. So I created Open House Kit. It's a small lightweight ",
-        "application that a real estate agent can use as a digital ",
-        "sign in page for the open houses they host."
-      ],
-      [
-        "It provides features such as weather updates, performance analysis, ",
-        "and with a premium account if offers more interaction with visitors ",
-        "through text notifications and lead follow-up. It's not a fully fledged ",
-        "CRM application, but it'll get the job done for open house."
-      ],
-      ["The Application is still in development, but soon to be fully produced and deployed"]
     ]
   },
   {

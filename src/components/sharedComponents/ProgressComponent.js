@@ -48,7 +48,7 @@ const Progress = props => {
   const renderBalls = (num) => {
     var render = [];
     for (let index = 0; index < num; index++) {
-      render.push(<motion.div transition={{duration: .5, delay: index * .5}} animate={{x: index / 5 * 100 + "%"}}><ProgressBall className="bg-secondary position-absolute rounded-circle" /></motion.div>)
+      render.push(<motion.div key={index} transition={{duration: .5, delay: index * .5}} animate={{x: index / 5 * 100 + "%"}}><ProgressBall className="bg-secondary position-absolute rounded-circle" /></motion.div>)
     }
     return render
   }
