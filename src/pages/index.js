@@ -1,17 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import '../assets/scss/App.scss'
 import { Helmet } from 'react-helmet'
 import { AnimatePresence, motion } from 'framer-motion'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import Banner from '../components/Banner'
 import Portfolio from '../components/Portfolio'
+import Contact from '../components/Contact'
 
 const Home = props => {
-  const availablePortfolioPieces = props.data.allContentfulContentType.nodes
   const profilePicture = props.data.profilePicture.childImageSharp.fixed.src
-  const openHouseApplicationContent = props.data.contentfulOpenHouseApplication
-  const [showcase, setShowcase] = useState(false)
+  const gitHubPinnedRepositories = props.data.gitHubPinnedRepositories.nodes[0].rawResult.data.viewer.pinnedItems.nodes
+  const [showContact, setShowContact] = useState(false)
 
   const variants = {
     initial: {
@@ -24,13 +24,9 @@ const Home = props => {
       y: "100%"
     }
   }
-  useEffect(() => {
-    console.log(showcase)
-  },[showcase])
-
 
   return (
-    <Layout location="/">
+    <Layout location="/" setShowContact={setShowContact}>
       <Helmet
         htmlAttributes={{ lang: 'en' }}
         title="Mckenzie Personal Site"
@@ -40,13 +36,13 @@ const Home = props => {
         ]}
       />
       <AnimatePresence exitBeforeEnter>
-        {showcase ?
+        {showContact ?
           <motion.div key="home" exit={{y: "100%"}} initial={{y: "100%"}} animate={{y: 0}}>
-            <Portfolio content={openHouseApplicationContent} setShowcase={bool => setShowcase(bool)} />
+            <Contact setShowContact={setShowContact} />
           </motion.div>
           :
           <motion.div key="showcase" exit={{y: "100%"}}>
-            <Banner portfolioItems={availablePortfolioPieces} profilePicture={profilePicture} setShowcase={bool => setShowcase(bool)}/>
+            <Banner profilePicture={profilePicture} repos={gitHubPinnedRepositories} data={props.data}/>
           </motion.div>
         }
       </AnimatePresence>
@@ -56,37 +52,51 @@ const Home = props => {
 }
 
 export const query = graphql`
-  query HomePageQuery {
-    site {
-      siteMetadata {
-        description
-      }
-    }
-    contentfulOpenHouseApplication {
-      portfolioDescription {
-        portfolioDescription
-      }
-      portfolioPieceImages {
-        fluid {
-          srcWebp
-          srcSetWebp
+query IndexPageQuery {
+  allContentfulEntry {
+    nodes {
+      ... on ContentfulBiosWho {
+        who {
+          who
         }
       }
-      openHouseApp
-    }
-    allContentfulContentType {
-      nodes {
-        name
+      ... on ContentfulBiosWhat {
+        what {
+          what
+        }
       }
-    }
-    profilePicture : file(relativePath: {eq: "images/agentPic.jpeg"}, sourceInstanceName: {eq: "assets"}) {
-      childImageSharp {
-        fixed (width: 300 , quality: 85) {
-          ...GatsbyImageSharpFixed
+      ... on ContentfulBiosWhy {
+        why {
+          why
         }
       }
     }
   }
+  profilePicture : file(relativePath: {eq: "images/agentPic.jpeg"}, sourceInstanceName: {eq: "assets"}) {
+    childImageSharp {
+      fixed (width: 300 , quality: 85) {
+        ...GatsbyImageSharpFixed
+      }
+    }
+  }
+  gitHubPinnedRepositories : allGithubData {
+    nodes {
+      id
+      rawResult {
+        data {
+          viewer {
+            pinnedItems {
+              nodes {
+                name
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 `
 
 export default Home

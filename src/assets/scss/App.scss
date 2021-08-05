@@ -2,7 +2,6 @@ $primary: #EEC35D;
 $secondary: #CFB67C;
 $light: $secondary;
 
-
 body::-webkit-scrollbar {
   display: none;
 }
@@ -84,3 +83,7 @@ body {
 
 
 @import "~bootstrap/scss/bootstrap";
+
+.form-control::placeholder {
+  color: $primary;
+}

@@ -3,6 +3,25 @@ require("dotenv").config({
 })
 const path = require(`path`);
 
+const gitHubToken = process.env.GITHUB_API_ACCESS_TOKEN
+const gitHubQuery = `
+query GitHubPinnedRepositories{ 
+  viewer { 
+    login
+    isViewer
+    pinnedItems (first: 5) {
+      totalCount
+      nodes {
+        ... on Repository {
+          name
+          url
+        }
+      }
+    }
+  }
+}
+`
+
 
 module.exports = {
   siteMetadata: {
@@ -20,24 +39,21 @@ module.exports = {
     'gatsby-transformer-json',
     'gatsby-plugin-react-helmet',
     {
+      resolve: `gatsby-source-github-api`,
+      options: {
+        // token: required by the GitHub API
+        token: gitHubToken,
+        // GraphQLquery: defaults to a search query
+        graphQLQuery: gitHubQuery,
+      }
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `wngrvjnbgulo`,
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/assets/images/website-icon.png', // This path is relative to the root of the site.
-      },
+      }
     },
     {
       resolve: "gatsby-plugin-react-svg",

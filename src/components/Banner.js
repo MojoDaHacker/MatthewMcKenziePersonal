@@ -1,129 +1,105 @@
-import React, {useState} from 'react'
-import {Container as Cont, Row, Col, Image, ListGroup, Button} from 'react-bootstrap'
-import Progress from './sharedComponents/ProgressComponent.js'
-// import Canvas from './sharedComponents/LightningCanvas.js'
+import React, { useState } from 'react'
+import { Container, Row, Col, Image, Tab, Nav } from 'react-bootstrap'
+import Who from './Who'
+import What from './What'
+import Why from './Why'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const Banner = props => {
-  const [portfolio, showPortfolio] = useState(false);
+import ReactFavicon from '../assets/favicons/react_favicon.ico'
+import MongoFavicon from '../assets/favicons/mongo_favicon.ico'
+import NodeFavicon from '../assets/favicons/nodejs_favicon.ico'
+import ExpressFavicon from '../assets/favicons/express_favicon.ico'
 
-  const buttonVariant = {
-    hidden: {
-      scale: 0,
-      opactiy: 0,
+
+const Banner = props => {
+  const [buttonSelected, setButtonSelected] = useState(null)
+  const variants = {
+    drawerClosed: {
+      x: "100%",
     },
-    visible: {
-      scale: 1,
-      opactiy: 1
+    drawerOpen: {
+      x: 0,
+      transition: {
+        duration: 1
+      }
+    },
+    underlineButton: {
+
     }
   }
-  const leftColVariant = {
-    unMount: {
-      x: "102%"
-    },
-    mount: {
-      x: "0"
-    },
-    transition: {
-      duration: 25,
-      delay: 2
-    }
-  }
-  const middleColVariant = {
-    initial: {
-      rotate: 0
-    },
-    transition: {
-      rotate: 90
-    }
-  }
-  const rightColVariant = {
-    unMount: {
-      x: "-102%"
-    },
-    mount: {
-      x: "0"
-    }
-  }
+
+  const handleButtonClick = key => setButtonSelected(key)
+  const buttonCondition = buttonSelected !== null
+  const content = props.data.allContentfulEntry.nodes
+  const contentComponents = [Who, What, Why]
 
   return ( 
     <>
       <section>
         {/* <Canvas /> */}
         <div className="d-flex flex-column">
-          <Cont className="h-100 d-flex flex-column justify-content-center text-primary p-0" fluid>
-            <Row className="w-100 p-3 justify-content-center" >
-              <Col className="overflow-hidden" xs={5}>
-                <motion.div variants={leftColVariant} initial="unMount" animate="mount" transition={{delay: 1}} className="text-center">
-                  <div>
-                    <h2 className="mx-auto">Matthew McKenzie</h2>
-                  </div>
-                  <div>
-                    <Image className="" src={props.profilePicture} roundedCircle/> 
-                  </div>
-                </motion.div>
-              </Col>
-              <Col xs="auto" className="p-0">
-                <div className="text-primary h-100 rounded-circle" style={{minWidth: 1, border: "1px solid"}}></div>
-              </Col>
-              <Col xs={5} className="overflow-hidden">
-                <motion.div variants={rightColVariant} initial="unMount" animate="mount" transition={{when: "beforeChildren"}} className="h-100 d-flex flex-column">
+          <Container  className="vh-100 d-flex flex-column justify-content-center text-primary p-0">
+            <Tab.Container>
+              <Row className="w-100 h-50 p-3 justify-content-center overflow-hidden" >
+                <Col as={motion.div} layout transition={{duration: 1}} className="overflow-hidden d-flex justify-content-center" xs={buttonCondition ? 3 : 6}>
                   <div className="text-center">
-                    <h2 className="text-center">Full Stack Developer | UI/UX Designer</h2>
-                    <p>
-                      Developing websites and applications for the past 5 years using web technologies of the usual
-                      HTML, CSS, and JS. In addition to technologies, I have gained experience in several frameworks
-                      such as React, Node, Codeignitor, Laravel. However, I'm mostly familiar with the MERN Stack frameworks
-                      to create web products.
-                    </p>
+                    {!buttonCondition && (
+                      <h2 className="mx-auto">Matthew McKenzie</h2>
+                    )}
+                    <div>
+                      <Image className="" src={props.profilePicture} roundedCircle fluid/> 
+                    </div>
                   </div>
-                  <div className="d-flex flex-column justify-content-center h-100 w-100 mx-auto">
-                    <ListGroup variant="flush">
-                      <ListGroup.Item className="bg-transparent d-flex border-0">
-                        <div className="text-center w-25">M</div>
-                        <div className=" position-relative w-100"><Progress num={4}/></div>
-                      </ListGroup.Item>
-                      <ListGroup.Item className="bg-transparent d-flex border-0">
-                        <div className="text-center w-25">E</div>
-                        <div className=" position-relative w-100"><Progress num={3}/></div>
-                      </ListGroup.Item>
-                      <ListGroup.Item className="bg-transparent d-flex border-0">
-                        <div className="text-center w-25">R</div>
-                        <div className=" position-relative w-100"><Progress num={5}/></div>
-                      </ListGroup.Item>
-                      <ListGroup.Item className="bg-transparent d-flex border-0">
-                        <div className="text-center w-25">N</div>
-                        <div className=" position-relative w-100"><Progress num={4}/></div>
-                      </ListGroup.Item>
-                    </ListGroup>
-                  </div>
-                </motion.div>
-              </Col>
-            </Row>
-            <Row className="w-100 p-3">
-              <motion.div onHoverStart={() => showPortfolio(true)} className="mx-auto d-flex justify-content-center">
-                <AnimatePresence exitBeforeEnter>
-                  {!portfolio ? (
-                    <motion.div key="portfolio" exit="hidden" initial="hidden" animate="visible" variants={buttonVariant}>
-                      <Button className="rounded-pill">Portfolio</Button>
-                    </motion.div>
-                  ) : (
-                    props.portfolioItems.map((val, i) => {
-                      return (
-                        <motion.div key={i} exit="hidden"  initial="hidden" animate="visible" onHoverEnd={() => showPortfolio(false)} variants={buttonVariant}>
-                          <Button className="mx-2 rounded-pill" key={i} onClick={() => props.setShowcase(true)}>{val.name}</Button>
-                        </motion.div>
-                      )
-                    })
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </Row>
-          </Cont>
+                </Col> 
+                {buttonCondition && (
+                  <AnimatePresence>
+                    <Col
+                      className="h-100"
+                      xs={7}
+                      as={motion.div}
+                      key="linkAction"
+                      initial="drawerClosed"
+                      animate="drawerOpen"
+                      exit=""
+                      variants={variants}
+                    >
+                      <Tab.Content className="h-100 overflow-auto">
+                      {contentComponents.map((val, i) => (
+                        <Tab.Pane key={i} eventKey={i} className="overflow-auto">
+                          {React.createElement(
+                            val,
+                            props.repos,
+                            content[i]
+                          )}
+                        </Tab.Pane>
+                      ))}
+                      </Tab.Content>
+                    </Col>
+                  </AnimatePresence>
+                )}
+              </Row>
+              <Row className="w-100 p-3">
+                <Col>
+                  <Nav className="mx-auto d-flex justify-content-center">
+                    {["Who", "What", "Why"].map((val, i) => (
+                      <Nav.Item key={i} className={`rounded-pill m-3 ${buttonSelected == i && "border-bottom border-primary"}`}>
+                        <Nav.Link 
+                          eventKey={i}
+                          onSelect={handleButtonClick}
+                          children={val}
+                        />
+                      </Nav.Item>
+                    ))}
+                  </Nav>
+                </Col>
+              </Row>
+            </Tab.Container>
+          </Container>
         </div>
       </section>
     </>
   )  
 }
+
 
 export default Banner
