@@ -87,3 +87,17 @@ body {
 .form-control::placeholder {
   color: $primary;
 }
+
+*::-webkit-scrollbar {
+  width: 1em;
+  background-color: transparent;
+}
+*::-webkit-scrollbar-track {
+  margin: 5px;
+  padding: 5px;
+
+}
+*::-webkit-scrollbar-thumb {
+  background-color: $primary;
+  border-radius: 25px;
+}

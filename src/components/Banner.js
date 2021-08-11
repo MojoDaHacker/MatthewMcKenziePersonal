@@ -15,16 +15,15 @@ const Banner = props => {
   const [buttonSelected, setButtonSelected] = useState(null)
   const variants = {
     drawerClosed: {
-      x: "100%",
-    },
-    drawerOpen: {
-      x: 0,
+      width: "100%",
       transition: {
-        duration: 1
+        duration: 2
       }
     },
-    underlineButton: {
-
+    drawerOpen: {
+      transition: {
+        duration: 2
+      }
     }
   }
 
@@ -38,45 +37,36 @@ const Banner = props => {
       <section>
         {/* <Canvas /> */}
         <div className="d-flex flex-column">
-          <Container  className="vh-100 d-flex flex-column justify-content-center text-primary p-0">
+          <Container className="vh-100 d-flex flex-column justify-content-center align-items-center text-primary p-0">
             <Tab.Container>
-              <Row className="w-100 h-50 p-3 justify-content-center overflow-hidden" >
-                <Col as={motion.div} layout transition={{duration: 1}} className="overflow-hidden d-flex justify-content-center" xs={buttonCondition ? 3 : 6}>
-                  <div className="text-center">
-                    {!buttonCondition && (
-                      <h2 className="mx-auto">Matthew McKenzie</h2>
-                    )}
-                    <div>
-                      <Image className="" src={props.profilePicture} roundedCircle fluid/> 
-                    </div>
-                  </div>
-                </Col> 
-                {buttonCondition && (
-                  <AnimatePresence>
-                    <Col
-                      className="h-100"
-                      xs={7}
-                      as={motion.div}
-                      key="linkAction"
-                      initial="drawerClosed"
-                      animate="drawerOpen"
-                      exit=""
-                      variants={variants}
-                    >
-                      <Tab.Content className="h-100 overflow-auto">
-                      {contentComponents.map((val, i) => (
-                        <Tab.Pane key={i} eventKey={i} className="overflow-auto">
-                          {React.createElement(
-                            val,
-                            props.repos,
-                            content[i]
-                          )}
-                        </Tab.Pane>
-                      ))}
-                      </Tab.Content>
-                    </Col>
-                  </AnimatePresence>
-                )}
+              <Row className="w-75 h-50 p-3 justify-content-center overflow-hidden" >
+                <Col className="d-flex h-100">
+                  <motion.div initial={{width: "100%"}} transition={{duration: 2}} animate={buttonSelected ? { width: "25%"} : false} className=" mr-3 text-center">
+                    <h2 className="mx-auto">Matthew McKenzie</h2>
+                    <Image src={props.profilePicture} roundedCircle className="mw-100"/> 
+                  </motion.div>
+                  <motion.div
+                    className="h-100 overflow-auto"
+                    initial={{width: 0}}
+                    layout
+                    animate={buttonSelected ? {width: "100%"} : false}
+                    transition={{
+                      duration: 2
+                    }}
+                  >
+                    <Tab.Content className="h-100 overflow-auto">
+                    {contentComponents.map((val, i) => (
+                      <Tab.Pane key={i} eventKey={i} className="overflow-auto">
+                        {React.createElement(
+                          val,
+                          props.repos,
+                          content[i]
+                        )}
+                      </Tab.Pane>
+                    ))}
+                    </Tab.Content>
+                  </motion.div>
+                </Col>
               </Row>
               <Row className="w-100 p-3">
                 <Col>
